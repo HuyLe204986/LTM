@@ -9,15 +9,15 @@
 9 | 2 | Chủ nhân của quả bóng vàng 2017? | C.Ronaldo | L.Messi | Neymar JR | L.Modric | C.Ronaldo |
 10 | 2 | Tác phẩm "Vợ chồng A Phủ" của nhà văn nào? | Tô Hoài | Nam Cao | Thạch Lam | Nguyễn Tuân | Tô Hoài |
 11 | 2 | Từ năm 544 đến năm 602 quốc hiệu nước ta là gì? | Văn Lang | Vạn Xuân |  | GOOD | Vạn Xuân |
-12 | 2 | 12CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-13 | 2 | 13CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-14 | 2 | 14CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-15 | 3 | 15CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-16 | 3 | 16CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-17 | 3 | 17CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-18 | 3 | 18CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-19 | 3 | 19CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-20 | 3 | 20CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-21 | 3 | 21CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-22 | 3 | 22CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+12 | 2 | Cứ 4 vỏ chai nước ngọt thì đổi được 01 chai mới. Hỏi với 16 vỏ chai nước ngọt có thể đổi được bao nhiêu chai? | 4 | 5 | 6 | 7 | 5 |
+13 | 2 | Nước nào giành chiến thắng trong cuộc thi Mrs World 2009 | Nga | Đức | Anh | Việt Nam | Nga |
+14 | 2 | Đội bóng nào tại Premier League có biệt danh là “Qủy đỏ”| M.United | Arsenal | Chelsea | Tottenham | M.United |
+15 | 3 | Bài thơ “Nắng mới” của Lưu Trọng Lư viết về ai? | Bố | Mẹ | Ông | Bà | Mẹ |
+16 | 3 | Which is the mascot of AIG 3 | Chicken | NO | A LITTER | GOOD | Chicken |
+17 | 3 | Từ 1 đến 150 có bao nhiêu chữ số 0 | 14 | 15 | 16 | 17 | 16 |
+18 | 3 | Ngày vì người nghèo: | 17/10 | 16/10 | 15/10 | 18/10 | 17/10 |
+19 | 3 | Tác giả “Bàn tay của Chúa” phiên bản người Pháp: | K.Benzema | R.Varane | T.Henry | P.Pogba | T.Henry |
+20 | 3 | Khi rơi tự do vật bị lêch về phương nào | Đông | Tây | Nam | Bắc | Đông |
+21 | 3 | EURO lần đầu tiên tổ chức tại quốc gia nào? | Italia | Pháp | Đức | Anh | Pháp |
+22 | 3 | Nằm bên dãy Hoàng Liên Sơn, Mù Căng Chải là huyện vùng sâu vùng xa của tỉnh | Lạng Sơn | Sơn La | Hòa Bình | Yên Bái | Yên Bái |
 23 | 3 | Tác phẩm "Tiếng sáo diều" của họa sĩ nào? | Bùi Xuân Phái | Trần Văn Cẩn | Ngô Đức Kế | Lê Lam | Bùi Xuân Phái |
