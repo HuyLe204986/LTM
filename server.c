@@ -4,6 +4,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "server.h"
 #include "storage.h"
@@ -66,8 +67,8 @@ int main (int argc, char **argv)
             close (listenfd);
             // printf("fd: %d\n", connfd);
             while (1)  {
+                printf("server handle req...");
                 handle(req, res);    
-                
             }
 
             if (n < 0)
@@ -80,22 +81,9 @@ int main (int argc, char **argv)
     }
 }
 
-// int main() {
-//     char req[MAXLINE], res[MAXLINE];
-//     // strcpy(req, "LOGIN_TEACHER teacher1 111");
-//     // strcpy(req, "CREATE_ROOM room4");
-//     // strcpy(req, "DELETE_ROOM room4");
-
-//     // strcpy(req, "LOGIN_TEACHER teacher1 111");
-//     // strcpy(req, "SHOW_ROOM");
-//     // strcpy(req, "JOIN_ROOM room3");
-//     // strcpy(req, "START_TEST");
-//     // strcpy(req, "ADD_QUESTION 1|Hom nay la thu may?|thu 2|thu 3|thu 4|thu 5|thu 3|");
-//     handle(req, res);
-// }
 
 /**
-*xử lý yêu cầu đến từ máy khách
+* xử lý yêu cầu đến từ máy khách
 * @param {char*} req: yêu cầu từ client
 */
 void handle(char *req, char *res) {
@@ -103,10 +91,17 @@ void handle(char *req, char *res) {
     // message: thông điệp đi kèm với thao tác đó
     char op[MAX], message[MAXLINE];
     recvReq(req); // lưu lại chuỗi req
-    // printf("\nreq: %s..\n", req);
     parseReq(req, op, message); // tách phần op và message
-
-    if (strcmp(op, "LOGIN_STUDENT") == 0) {
+    if(strcmp(op, "SIGNUP_STUDENT") == 0 || strcmp(op,"SIGNUP_TEACHER") == 0) {
+        Account acc;
+        strcpy(acc.username, strtok(message, " "));
+        strcpy(acc.password, strtok(NULL, " "));
+        char *confirmPassword = strtok(NULL, " ");
+        char *roleName = strtok(NULL, " ");
+        int role = strcmp(roleName, "student") == 0 ? 1 : 2;
+        int signupSuccess = signUp(acc.username, acc.password, confirmPassword, role);
+    }
+    else if (strcmp(op, "LOGIN_STUDENT") == 0) {
         Account acc;
         strcpy(acc.username, strtok(message, " "));
         strcpy(acc.password, strtok(NULL, ""));
@@ -172,6 +167,7 @@ int recvReq(char *req) {
 void parseReq(char *req, char *op, char *message) {
     char *next_s;
     // tách các phần của req
+    printf("req server: %s", req);
     strcpy(op, strtok(req, " ")); // lưu phần đầu vào biến op
     if ((next_s = strtok(NULL, ""))) {
         strcpy(message, next_s);
@@ -210,9 +206,88 @@ void sendRes(char *res) {
 }
 
 /*
+* xử lý kiểm tra usename khi đăng ký tài khoản
+* @param {char*} usename: tên đăng nhập
+* @param {int} role: vai trò đăng ký(1-student, 2-teacher)
+*/
+int isUsernameExist(char *username, int role) {
+    FILE *file;
+    char filename[MAX];
+
+    if (role == 1) {
+        strcpy(filename, "acc_stud.txt");
+    } else if (role == 2) {
+        strcpy(filename, "acc_teacher.txt");
+    }
+
+    file = fopen(filename, "r"); // Mở file để đọc
+
+    if (file == NULL) {
+        printf("Cannot open file!\n");
+        return -1; // Trả về -1 nếu không thể mở file
+    }
+
+    char line[MAX];
+    while (fgets(line, sizeof(line), file)) { // Đọc từng dòng trong file
+        char savedUsername[MAX];
+        sscanf(line, "%s", savedUsername); // Lấy tên người dùng từ dòng đọc được
+
+        if (strcmp(savedUsername, username) == 0) {
+            fclose(file);
+            return 1;
+        }
+    }
+    fclose(file);
+    return 0; 
+}
+
+/*
+* xử lý đăng ký tài khoản
+* @param {char*} usename: tên đăng nhập
+* @param {char*} password:  mật khẩu
+* @param {char*} comfirmPassword: xác nhận mất khẩu
+* @param {int} role: vai trò đăng ký(1-student, 2-teacher)
+*/
+int signUp(char *username, char *password, char *comfirmPassword, int role) {
+    char res[MAXLINE] = "";
+    if (strcmp(password, comfirmPassword) != 0) {
+        makeRes(res, "PASSWORDS_NOT_MATCH", "");
+        sendRes(res);
+        return 0;
+    }
+
+    if (isUsernameExist(username, role) == 1) {
+        makeRes(res, "USERNAME_ALREADY_EXISTS", "");
+        sendRes(res);
+        return 0; // Trả về 0 nếu tên người dùng đã tồn tại
+    }
+
+    FILE *file;
+    char filename[MAX];
+    if (role == 1) {
+        strcpy(filename, "acc_stud.txt");
+    } else if (role == 2) {
+        strcpy(filename, "acc_teacher.txt");
+    }
+    file = fopen(filename, "a");
+
+    if (file == NULL) {
+        printf("Cannot open file!\n");
+        return 0; // Trả về 0 nếu không thể mở file
+    }
+
+    fprintf(file, "%s %s\n", username, password);
+    fclose(file);
+
+    makeRes(res, "SIGNUP_OK", "");
+    sendRes(res);
+    return 1;
+}
+
+/*
 * xử lý đăng nhập với student
 * @param {char*} usename: tên đăng nhập
-* @param {char*} password: tên mật khẩu
+* @param {char*} password: mật khẩu
 */
 int loginStudent(char *username, char *password) {
     char buf[MAXLINE] = ""; // danh sách phòng học
@@ -437,38 +512,6 @@ int startTest() {
     return 1;
 }
 
-// int addQuestion(char *room) {
-//     char res[MAXLINE] = "";
-//     char *buf =(char*)malloc(sizeof(char)*MAXLINE);
-//     char f_path[100] = "";
-//     // char room[100] = "";
-//     FILE *fq;
-
-//     List roomL = getAllRooms(ROOM_FILE);
-//     Room* r = searchRoomByName(&roomL, room);
-
-//     if (r) {
-//         strcpy(f_path, "question/");
-//         strcat(f_path, room);
-//         strcat(f_path, ".txt");
-
-//         fq = fopen(f_path, "w");
-
-//         int b = 0;
-//         while( (b = recvReq(buf))> 0 ) {
-//                 fwrite(buf, strlen(buf), 1, fq);
-//                 printf("\nlen: %ld -  b: %d\n", strlen(buf), b);
-//             }
-//         printf("aaaaa\n");
-//         fclose(fq);
-//         makeRes(res, "ADD_QUESTION_OK", "");
-//     } else {
-//         makeRes(res, "ADD_QUESTION_NOT_OK", "");
-//     }
-//     sendRes(res);
-//     return 0;
-// }
-
 /*
 * thêm câu hỏi vào phòng học cụ thể
 * @param {char*} room_ques: tên phòng và nội dung câu hỏi 
@@ -507,24 +550,6 @@ int addQuestion(char *room_ques) {
         makeRes(res, "ADD_QUESTION_NOT_OK", "");
     }
     sendRes(res);
-
-    // if (r) {
-    //     strcpy(f_path, "question/");
-    //     strcat(f_path, room);
-    //     strcat(f_path, ".txt");
-
-    //     f = fopen(f_path, "w");
-
-    //     while (recv(fd, buf, MAXLINE, 0) > 0) {
-    //         fprintf(f, "%s", buf);
-    //         memset(buf, 0, MAXLINE);
-    //     }
-
-    //     makeRes(res, "ADD_QUESTION_OK", "");
-    // } else {
-    //     makeRes(res, "ADD_QUESTION_NOT_OK", "");
-    // }
-    // sendRes(res);
     return 0;
 }
 

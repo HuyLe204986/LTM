@@ -1,2 +1,2 @@
-student1	0
+student1	9
 student2	0

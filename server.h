@@ -11,6 +11,8 @@ void makeRes(char *res, char *op, char *message);
 void login();
 int loginStudent(char *username, char *password);
 int loginTeacher(char *username, char *password);
+int isUsernameExist(char *username, int role);
+int signUp(char *username, char *password, char *comfirmPassword, int role);
 
 int joinRoom(char *room_name);
 int startTest();

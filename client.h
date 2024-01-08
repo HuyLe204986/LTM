@@ -2,6 +2,7 @@
 #define __CLIENT_H__
 
 void home();
+void signup();
 void login(int mode);
 void startTest();
 void joinRoom(char *list_room);

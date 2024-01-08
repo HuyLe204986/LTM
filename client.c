@@ -59,6 +59,7 @@ void home() {
     printf("                              \n");
     printf("   1. Login Student           \n");
     printf("   2. Login Teacher           \n");
+    printf("   3. Sign Up                 \n");
     printf("   0. Exit                    \n");
     printf("______________________________\n\n");
 
@@ -67,13 +68,16 @@ void home() {
         scanf("%d", &choice);
         while(getchar() != '\n');
         
-        if (choice > -1 && choice < 3)  break;
+        if (choice > -1 && choice < 4)  break;
     }
 
     switch (choice) {
         case 1:
         case 2: 
             login(choice);
+            break;
+        case 3: 
+            signup();
             break;
         case 0:
             printf("\n[Exit]\n");
@@ -125,6 +129,61 @@ void login(int mode) {
 }
 
 /*
+* xử lý đăng ký tài khoản
+*/
+void signup() {
+    char req[MAXLINE] = "";
+    char buf[MAXLINE] = "";
+    char username[MAX] = ""; 
+    char password[MAX] = "";
+    char confirmPassword[MAX] = "";
+    char roleName[MAX] = "";
+
+    printf("\n____________Sign up____________\n\n");
+    printf("--> username: ");
+    scanf("%s", username);
+    while(getchar() != '\n');
+
+    printf("--> password: ");
+    scanf("%[^\n]", password);
+    while(getchar() != '\n');
+
+    printf("--> confirm password: ");
+    scanf("%[^\n]", confirmPassword);
+    while(getchar() != '\n');
+
+    printf("--> role: ");
+    scanf("%[^\n]", roleName);
+    while(getchar() != '\n');
+
+    // lưu vào buf định dạng <usename> <password> <confirmPW> <roleName>
+    strcat(buf, username);
+    strcat(buf, " ");
+    strcat(buf, password);
+    strcat(buf," ");
+    strcat(buf, confirmPassword);
+    strcat(buf, " ");
+    strcat(buf, roleName);
+
+    int role = strcmp(roleName, "student") == 0 ? 1 : 2;
+
+    switch (role) {
+    case 1:
+        makeReq(req, "SIGNUP_STUDENT", buf);
+        break;
+    
+    case 2:
+        makeReq(req, "SIGNUP_TEACHER", buf);
+        break;
+    }
+    sendReq(req);
+
+    // char res[MAXLINE];
+    // recvRes(res);
+    handleRes(res, req);
+}
+
+/*
 * xử lý thực hiện bài thi
 */
 void startTest() {
@@ -165,11 +224,15 @@ void handleRes(char *res, char *req) {
 
     recvRes(res); // nhận phản hồi từ server
     parseRes(res, op, message); // lấy ra mã thao tác và message
-
-    if (strcmp(op, "LOGIN_STUDENT_OK") == 0) {
+    if(strcmp(op, "SIGNUP_OK") == 0) {
+        printf("\n[%s]\n", op);
+    } else if(strcmp(op, "PASSWORDS_NOT_MATCH") == 0) {
+        printf("\n[%s]\n", op);
+    } else if(strcmp(op, "USERNAME_ALREADY_EXISTS") == 0) {
+        printf("\n[%s]\n", op);
+    } else if (strcmp(op, "LOGIN_STUDENT_OK") == 0) {
         printf("\n[%s]\n", op);
         joinRoom(message);
-        
     } else if (strcmp(op, "LOGIN_STUDENT_NOT_OK") == 0) {
         printf("\n[%s]\n", op);
 

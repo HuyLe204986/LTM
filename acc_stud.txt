@@ -1,7 +1,10 @@
-student1 111
-student2 222
-student3 333
-student4 444
-student5 555
-student6 666
-student7 777
+student1 1
+student2 1
+student3 1
+student4 1
+student5 1
+student6 1
+student7 1
+st 1
+sa 1
+huy 1
