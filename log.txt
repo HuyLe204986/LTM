@@ -1,0 +1,14 @@
+[2024-01-08 09:21:10] LOGIN student1
+[2024-01-08 09:21:14] JOIN_ROOM student1 room: room1
+[2024-01-08 09:21:23] START_TEST student1
+[2024-01-08 09:21:23] END_TEST student1 point: 2
+[2024-01-08 09:54:32] LOGIN student1
+[2024-01-08 09:54:34] JOIN_ROOM student1 room: room1
+[2024-01-08 10:14:01] LOGIN student1
+[2024-01-08 10:14:26] JOIN_ROOM student1 room: room1
+[2024-01-08 10:17:18] LOGIN student1
+[2024-01-08 10:17:20] JOIN_ROOM student1 room: room1
+[2024-01-08 10:19:29] LOGIN student1
+[2024-01-08 10:19:32] JOIN_ROOM student1 room: room1
+[2024-01-08 10:20:16] START_TEST student1
+[2024-01-08 10:20:16] END_TEST student1 point: 10

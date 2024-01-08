@@ -5,7 +5,9 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
+
 #include "client.h"
+#include "storage.h"
 
 #define MAXLINE 4096 /*max text line length*/
 #define MAX 100
@@ -323,6 +325,7 @@ void answer(char* x) {
     int i = 0;
     int c = 0;
     char question[MAXLINE], choice[4][MAX];
+    char userAnswer[10]; // Biến lưu trữ câu trả lời của người dùng
     do {
         if (i == 0) {
             parseQuestion(x, question, choice);
@@ -336,6 +339,7 @@ void answer(char* x) {
         printf("2. %s\n", choice[1]);
         printf("3. %s\n", choice[2]);
         printf("4. %s\n", choice[3]);
+
         do {
             printf("--> Your answer: ");
             scanf("%d", &c);

@@ -24,4 +24,5 @@ int deleteRoom(char *room_name);
 int addQuestion(char *ques);
 int showPoint(char *room_name);
 
+void writeLog(char *activity);
 #endif

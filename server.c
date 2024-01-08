@@ -5,6 +5,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "server.h"
 #include "storage.h"
@@ -19,7 +20,6 @@
 int point;
 char currentUserName[100];
 char currentRoom[100];
-
 int fd;
 
 int main (int argc, char **argv)
@@ -106,6 +106,13 @@ void handle(char *req, char *res) {
         strcpy(acc.username, strtok(message, " "));
         strcpy(acc.password, strtok(NULL, ""));
         int loginSuccess = loginStudent(acc.username, acc.password);
+    
+        if(loginSuccess) {
+            char infoActivity[100];
+            strcpy(infoActivity, "LOGIN ");
+            strcat(infoActivity, currentUserName);
+            writeLog(infoActivity);
+        }
 
     } else if (strcmp(op, "LOGIN_TEACHER") == 0) {
         Account acc;
@@ -113,25 +120,70 @@ void handle(char *req, char *res) {
         strcpy(acc.password, strtok(NULL, ""));
         int loginSuccess = loginTeacher(acc.username, acc.password);
 
+        if(loginSuccess) {
+            char infoActivity[100];
+            strcpy(infoActivity, "LOGIN ");
+            strcat(infoActivity, currentUserName);
+            writeLog(infoActivity);
+        }
+
     } else if (strcmp(op, "SHOW_ROOM") == 0) {
         int status = showRoom();
 
     } else if (strcmp(op, "CREATE_ROOM") == 0) {
         int status = createRoom(message);
 
+        if(status) {
+            char infoActivity[100];
+            strcpy(infoActivity, "CREATE_ROOM ");
+            strcat(infoActivity, currentUserName);
+            writeLog(infoActivity);
+        }
+
     } else if (strcmp(op, "DELETE_ROOM") == 0) {
         int status = deleteRoom(message);
 
+        if(status) {
+            char infoActivity[100];
+            strcpy(infoActivity, "DELETE_ROOM ");
+            strcat(infoActivity, currentUserName);
+            writeLog(infoActivity);
+        }
+
     } else if (strcmp(op, "JOIN_ROOM") == 0) {
         int status = joinRoom(message);
+        if(status) {
+            char infoActivity[100];
+            strcpy(infoActivity, "JOIN_ROOM ");
+            strcat(infoActivity, currentUserName);
+            strcat(infoActivity, " room: ");
+            strcat(infoActivity, currentRoom);
+            writeLog(infoActivity);
+        }
 
     } else if (strcmp(op, "START_TEST") == 0) {
         int status = startTest();
+        if(status) {
+            char infoActivity[100];
+            strcpy(infoActivity, "START_TEST ");
+            strcat(infoActivity, currentUserName);
+            writeLog(infoActivity);
+        }
 
     } else if (strcmp(op, "ANSWER") == 0) {
         makeRes(res, "", "");
         sprintf(res, "%s %d", "ANSWER_OK", point);
         sendRes(res);
+
+        char infoActivity[100];
+        char strPoint[100];
+        sprintf(strPoint, "%d", point);
+
+        strcpy(infoActivity, "END_TEST ");
+        strcat(infoActivity, currentUserName);
+        strcat(infoActivity, " point: ");
+        strcat(infoActivity, strPoint);
+        writeLog(infoActivity);
     } else if (strcmp(op, "ADD_QUESTION") == 0) {
         int status = addQuestion(message);
 
@@ -308,6 +360,7 @@ int loginStudent(char *username, char *password) {
                 n = n->next;
             }
             strcpy(currentUserName, username); // lưu lại tên người dùng hiện tại
+
             makeRes(res, "LOGIN_STUDENT_OK", buf);
             sendRes(res);
 
@@ -335,6 +388,7 @@ int loginTeacher(char *username, char *password) {
     Account *acc = searchAccountByUsername(&accStudL, username); // ktr gv
     if (acc) {
         if (strcmp(acc->password, password) == 0) {
+            strcpy(currentUserName, acc->username);
             makeRes(res, "LOGIN_TEACHER_OK", "");
             sendRes(res);
             return 1;
@@ -593,4 +647,26 @@ int showPoint(char *room_name) {
         sendRes(res);
     }
     return 0;
+}
+
+/*
+* ghi log hoạt động của nguời dùng
+* @param {char *} activity: thông tin về hoạt động của nguời dùng
+*/
+void writeLog(char *activity) {
+    // printf("activity %s", activity);
+    FILE *file = fopen("log.txt", "a");
+    if (file != NULL) {
+        time_t t = time(NULL); // Lấy thời gian hiện tại
+        struct tm *tm_info = localtime(&t);
+
+        fprintf(file, "[%d-%02d-%02d %02d:%02d:%02d] %s\n",
+                tm_info->tm_year + 1900, tm_info->tm_mon + 1, tm_info->tm_mday,
+                tm_info->tm_hour, tm_info->tm_min, tm_info->tm_sec, activity
+                );
+
+        fclose(file);
+    } else {
+        printf("Error opening log file!\n");
+    }
 }

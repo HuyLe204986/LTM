@@ -1,23 +1,23 @@
-1 | 1 | de2 1 CAN YOU SPEAK ENGLISH? | YES | NO | A LITTER | GOOD | A LITTER |
-2 | 1 | de2 2 CAN YOU SPEAK VIETNAMESE? | YES | NO | A LITTER | GOOD | GOOD |
-3 | 1 | de2 3 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-4 | 1 | de2 4 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-5 | 1 | de2 5 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-6 | 1 | de2 6 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-7 | 1 | de2 7 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-8 | 2 | de2 8 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-9 | 2 | de2 9 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-10 | 2 | de2 10 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-11 | 2 | de2 11 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-12 | 2 | de2 12 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-13 | 2 | de2 13 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-14 | 2 | de2 14 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-15 | 3 | de2 15 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-16 | 3 | de2 16 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-17 | 3 | de2 17 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-18 | 3 | de2 18 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-19 | 3 | de2 19 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-20 | 3 | de2 20 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-21 | 3 | de2 21 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-22 | 3 | de2 22 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-23 | 3 | de2 23 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+1 | 1 | Tổng của 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 là bao nhiêu? | 55 | 56 | 57 | 58 | 55 |
+2 | 1 | Tên nguyên tố hóa học có ký hiệu là H? | Hydro | Oxy | Nito | Cacbon | Hydro |
+3 | 1 | Thủ đô của Việt Nam là thành phố nào? | Hà Nội | Thành phố Hồ Chí Minh | Cần Thơ | Thanh Hóa | Hà Nội |
+4 | 1 | Tác giả của truyện ngắn "Chiếc lá cuối cùng" là ai? | O'Henry | An-đéc-xen | Guy de Maupassant | A.P. Chekhov | An-đéc-xen |
+5 | 1 | Tác phẩm "Mona Lisa" của họa sĩ nào? | Titian | Raphael | Leonardo da Vinci | Michelangelo | Leonardo da Vinci |
+6 | 1 | What does letter X in Roman number mean? | Ten | Nine | Eight | Seven | Ten |
+7 | 1 | 7CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+8 | 2 | Đền Patheon được coi là đỉnh cao của tư duy kỹ thuật thời ... cổ đại. | La Mã | Ai Cập | Hy Lạp | Việt Nam | La Mã |
+9 | 2 | Chủ nhân của quả bóng vàng 2017? | C.Ronaldo | L.Messi | Neymar JR | L.Modric | C.Ronaldo |
+10 | 2 | Tác phẩm "Vợ chồng A Phủ" của nhà văn nào? | Tô Hoài | Nam Cao | Thạch Lam | Nguyễn Tuân | Tô Hoài |
+11 | 2 | 11CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+12 | 2 | 12CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+13 | 2 | 13CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+14 | 2 | 14CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+15 | 3 | 15CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+16 | 3 | 16CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+17 | 3 | 17CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+18 | 3 | 18CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+19 | 3 | 19CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+20 | 3 | 20CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+21 | 3 | 21CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+22 | 3 | 22CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+23 | 3 | Tác phẩm "Tiếng sáo diều" của họa sĩ nào? | Bùi Xuân Phái | Trần Văn Cẩn | Ngô Đức Kế | Lê Lam | Bùi Xuân Phái |
