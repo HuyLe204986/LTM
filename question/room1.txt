@@ -4,18 +4,18 @@
 4 | 1 | Tác giả của truyện ngắn "Chiếc lá cuối cùng" là ai? | O'Henry | An-đéc-xen | Guy de Maupassant | A.P. Chekhov | An-đéc-xen |
 5 | 1 | Tác phẩm "Mona Lisa" của họa sĩ nào? | Titian | Raphael | Leonardo da Vinci | Michelangelo | Leonardo da Vinci |
 6 | 1 | What does letter X in Roman number mean? | Ten | Nine | Eight | Seven | Ten |
-7 | 1 | 7CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+7 | 1 | Tỉnh nào là tỉnh duy nhất của nước ta tiếp giáp với cả Lào và Trung Quốc? | Điện Biên | Sơn La | Lai Châu | Lào Cai | Điện Biên |
 8 | 2 | Đền Patheon được coi là đỉnh cao của tư duy kỹ thuật thời ... cổ đại. | La Mã | Ai Cập | Hy Lạp | Việt Nam | La Mã |
 9 | 2 | Chủ nhân của quả bóng vàng 2017? | C.Ronaldo | L.Messi | Neymar JR | L.Modric | C.Ronaldo |
 10 | 2 | Tác phẩm "Vợ chồng A Phủ" của nhà văn nào? | Tô Hoài | Nam Cao | Thạch Lam | Nguyễn Tuân | Tô Hoài |
-11 | 2 | 11CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-12 | 2 | 12CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-13 | 2 | 13CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-14 | 2 | 14CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-15 | 3 | 15CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-16 | 3 | 16CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-17 | 3 | 17CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-18 | 3 | 18CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+11 | 2 | Một tam giác có hai đường phân giác trong bằng nhau thì chắc chắn là tam giác…? | Cân | Đều | Vuông | Không xác định | Cân |
+12 | 2 | Ức Trai thi tập là tập thơ nổi tiếng của ai? | Nguyễn Du | Nguyễn Trãi | Nguyễn Dữ | Nguyễn Đình Chiểu | Nguyễn Trãi |
+13 | 2 | Dưới thời vua nào, Hà Nội có tên là Đông Đô? | Hồ Quý Ly | Lý Nam Đế | Lý Thường Kiệt | Lê Lợi | Hồ Quý Ly |
+14 | 2 | Trong các loại sóng vô tuyến, loại sóng nào có năng lượng lớn nhất?  | Sóng cực ngắn | Sóng ngắn | Sóng trung | Sóng dài | Sóng cực ngắn |
+15 | 3 | Ai là tổng bí thư đầu tiên của nước ta?  | Trần Phú | Lê Duẩn | Lê Khả Phiêu | Trường Chinh | Trần Phú |
+16 | 3 | Có bao nhiêu số nguyên tố có 1 chữ số?  | 1 | 2 | 3 | 4 | 4 |
+17 | 3 | Đại lượng nào đặc trưng cho tốc độ thực hiện công của dòng điện? | Công | Công suất | Tốc độ | Điện năng | Công suất |
+18 | 3 | Nguyên tố hóa học nào được sử dụng nhiều nhất trong việc chế tạo con chip vi tính? | Fe | Si | Ag | Pb | Si |
 19 | 3 | 19CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
 20 | 3 | 20CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
 21 | 3 | 21CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
