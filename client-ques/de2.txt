@@ -1,23 +1,23 @@
-1 | 1 | de2 1 CAN YOU SPEAK ENGLISH? | YES | NO | A LITTER | GOOD | A LITTER |
-2 | 1 | de2 2 CAN YOU SPEAK VIETNAMESE? | YES | NO | A LITTER | GOOD | GOOD |
-3 | 1 | de2 3 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-4 | 1 | de2 4 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-5 | 1 | de2 5 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-6 | 1 | de2 6 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-7 | 1 | de2 7 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-8 | 2 | de2 8 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-9 | 2 | de2 9 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-10 | 2 | de2 10 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-11 | 2 | de2 11 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-12 | 2 | de2 12 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-13 | 2 | de2 13 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-14 | 2 | de2 14 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-15 | 3 | de2 15 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-16 | 3 | de2 16 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-17 | 3 | de2 17 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-18 | 3 | de2 18 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-19 | 3 | de2 19 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-20 | 3 | de2 20 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-21 | 3 | de2 21 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-22 | 3 | de2 22 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
-23 | 3 | de2 23 CAN YOU SPEAK JAPANESE? | YES | NO | A LITTER | GOOD | A LITTER |
+1 | 1 | Vị hoàng hậu cuối cùng của chế độ phong kiến Việt Nam là ai? | Nam Phương | Bắc Phương | Tây Phương | Đông Phương | Nam Phương |
+2 | 1 | Huyện đảo Phú Quốc trực thuộc tỉnh thành nào của Việt Nam? | Bắc Giang| Kiên Giang | Hà Giang | Bà Rịa Vũng Tàu | Kiên Giang |
+3 | 1 | Tác giả của bài thơ “Đò lèn”? | Nguyễn Duy | Nguyễn Dương | Nguyễn Dữ | Nguyễn Huệ | Nguyễn Duy |
+4 | 1 | Có tất cả bao nhiêu số nguyên tố chẵn? | 0 | 1 | 2 | 3 | 1 |
+5 | 1 | Đa giác lồi phải có ít nhất bao nhiêu cạnh? | 2 | 3 | 4 | 5 | 3 |
+6 | 1 | Những hàm số có đạo hàm bậc nhất là 0 được gọi là gì? | Hàm hằng | Hàm ẩn | Hàm đồng biến | Hàm phân thức | Hàm hằng |
+7 | 1 | Biển Sầm Sơn thuộc tỉnh nào? | Thanh Hóa | Nghệ An | Hà Tĩnh | Quảng Bình | Thanh Hóa |
+8 | 2 | Who is author of ‘War and peace’ novel? | Andersen | Victor Hugo | Lev Tolsoy | Leonardo Da Vinci | Lev Tolsoy |
+9 | 2 | Nguyên tử của nguyên tố nào có độ âm điện lớn nhất?  | Hidro | Flo | Clo | Bro | Flo |
+10 | 2 | Ai là cầu thủ có nhiều quả bóng vàng thứ 2 trên thế giới? | L.Messi | C.Ronaldo | R.Lewandowski | Ronaldinho | C.Ronaldo |
+11 | 2 | Trụ sở của WTO nằm ở quốc gia nào? | Thụy Sỹ | Thụy Điển | Hà Lan | Anh | Thụy Sỹ |
+12 | 2 | Ức Trai thi tập là tập thơ nổi tiếng của ai? | Nguyễn Du | Nguyễn Trãi | Nguyễn Dữ | Nguyễn Đình Chiểu | Nguyễn Trãi |
+13 | 2 | Dưới thời vua nào, Hà Nội có tên là Đông Đô? | Hồ Quý Ly | Lý Nam Đế | Lý Thường Kiệt | Lê Lợi | Hồ Quý Ly |
+14 | 2 | Trong các loại sóng vô tuyến, loại sóng nào có năng lượng lớn nhất?  | Sóng cực ngắn | Sóng ngắn | Sóng trung | Sóng dài | Sóng cực ngắn |
+15 | 3 | Ai là tổng bí thư đầu tiên của nước ta?  | Trần Phú | Lê Duẩn | Lê Khả Phiêu | Trường Chinh | Trần Phú |
+16 | 3 | Có bao nhiêu số nguyên tố có 1 chữ số?  | 1 | 2 | 3 | 4 | 4 |
+17 | 3 | Đại lượng nào đặc trưng cho tốc độ thực hiện công của dòng điện? | Công | Công suất | Tốc độ | Điện năng | Công suất |
+18 | 3 | Nguyên tố hóa học nào được sử dụng nhiều nhất trong việc chế tạo con chip vi tính? | Fe | Si | Ag | Pb | Si |
+19 | 3 | What is the capital of Philippines? | Cebu | Davao | Manila | Antipolo | Manila |
+20 | 3 | Bộ nhiễm sắc thể 2n ở người bằng bao nhiêu?  | 45 | 46 | 47 | 48 | 46 |
+21 | 3 | Quốc gia nào là chủ nhà của Olympic 2021? | Hàn Quốc | Brazil | Nhật Bản | Đức | Nhật Bản |
+22 | 3 | Ai là vị vua đầu tiên cử hành lễ cày tịch điền ở nước ta? | Lê Chiêu Thống | Lê Lợi | Lê Đại Hành | Lê Thánh Tông | Lê Đại Hành |
+23 | 3 | Tên nguyên tố nào trong tiếng latin có nghĩa là “Bạc lỏng”? | Mg | Ca | Ag | Hg | Hg |
