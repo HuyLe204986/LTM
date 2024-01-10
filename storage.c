@@ -377,6 +377,7 @@ List getQuestionsByLevel(char *ques_file, int level) {
         strcpy(ques->choice[2], strtok(NULL, "|"));
         strcpy(ques->choice[3], strtok(NULL, "|"));
         strcpy(ques->answer, strtok(NULL, "|"));
+        printf("\n-----ques anser: %s-------\n", ques->answer);
         addEnd(&l, ques);
     }
     fclose(f);

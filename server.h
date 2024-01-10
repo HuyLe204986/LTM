@@ -16,6 +16,7 @@ int signUp(char *username, char *password, char *comfirmPassword, int role);
 
 int joinRoom(char *room_name);
 int startTest();
+int editAnswerQuestion();
 int answer();
 
 int showRoom();

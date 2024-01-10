@@ -21,6 +21,8 @@ int point;
 char currentUserName[100];
 char currentRoom[100];
 int fd;
+int isCorrectAnswer[20];
+int correctAnswer[20];
 
 int main (int argc, char **argv)
 {
@@ -169,7 +171,8 @@ void handle(char *req, char *res) {
             strcat(infoActivity, currentUserName);
             writeLog(infoActivity);
         }
-
+    } else if(strcmp(op, "EDIT") == 0) {
+        int status = editAnswerQuestion(message);
     } else if (strcmp(op, "ANSWER") == 0) {
         makeRes(res, "", "");
         sprintf(res, "%s %d", "ANSWER_OK", point);
@@ -218,7 +221,7 @@ int recvReq(char *req) {
 void parseReq(char *req, char *op, char *message) {
     char *next_s;
     // tách các phần của req
-    printf("req server: %s", req);
+    printf("req server: %s\n", req);
     strcpy(op, strtok(req, " ")); // lưu phần đầu vào biến op
     if ((next_s = strtok(NULL, ""))) {
         strcpy(message, next_s);
@@ -519,11 +522,11 @@ int startTest() {
     char res[MAXLINE] = "";
     char req[MAXLINE] = "";
     char buf[MAXLINE] = "";
+    
     Question *q;
     List quesL = makeQues(currentRoom);
     // printf("room: %s - count: %d\n", currentRoom, quesL.count);
     Node n = quesL.head;
-    
     point = 0;
     for (int i = 0; i<10; i++) {
         q = (Question*)n->value;
@@ -536,21 +539,41 @@ int startTest() {
             makeRes(res, "", buf);
         sendRes(res);
         recvReq(req); // nhận câu trả lời từ client
-        printf("\nanswer req: %s %ld.\n", req, strlen(req));
-        printf("\nanswer correct: %s %ld.\n", q->answer, strlen(q->answer));
 
-        // if (strcmp(req, q->answer) == 0) {
-        //     point++;
-        // }
+        printf("\nanswer req: %s.\n", req);
+        printf("\nanswer correct: %s.\n", q->answer);
+
         if(atoi(req) == atoi(q->answer)) {
             point++;
+            isCorrectAnswer[i] = 1; 
         }
+        correctAnswer[i] = atoi(q->answer);
         printf("Diem %d\n", point);
         memset(buf, 0, MAXLINE);
         n = n->next;
     }
-    // printf("\npoint: %d\n", point);
-    
+    // else if(mode == 1) {
+    //     int editQuesNumber;
+    //     int answerEdit;
+    //     char option[200];
+    //     recvReq(req); // nhận câu trả lời từ client
+    //     printf("req mode edit: %s\n", req);
+    //     sscanf(req, "%s %d %d",option, &editQuesNumber, &answerEdit);
+    //     printf("option: %s.\n", option);
+    //     printf("edit ques number: %d.\n", editQuesNumber);
+    //     printf("answer edit: %d.\n", answerEdit);
+    //     printf("is correct %d\n", isCorrectAnswer[editQuesNumber - 1]);
+    //     printf( "correct answer %d\n", correctAnswer[editQuesNumber - 1]);
+
+    //     if(isCorrectAnswer[editQuesNumber - 1]) {
+    //         if(answerEdit != correctAnswer[editQuesNumber - 1]) point--;
+    //     }else {
+    //         if(answerEdit == correctAnswer[editQuesNumber - 1]) point++;
+    //     }
+    // }
+
+    printf("\npoint: %d\n", point);
+
     char f[100];
     strcpy(f, RESULT_FOLDER);
     strcat(f, "/");
@@ -571,6 +594,45 @@ int startTest() {
     saveAllRoomPoint(f, roompL);
     return 1;
 }
+
+int editAnswerQuestion(char *message) {
+
+    int editQuesNumber;
+    int answerEdit;
+    printf("req mode edit: %s\n", message);
+    sscanf(message, "%d %d", &editQuesNumber, &answerEdit);
+    printf("edit ques number: %d.\n", editQuesNumber);
+    printf("answer edit: %d.\n", answerEdit);
+    printf("is correct %d\n", isCorrectAnswer[editQuesNumber - 1]);
+    printf( "correct answer %d\n", correctAnswer[editQuesNumber - 1]);
+
+    if(isCorrectAnswer[editQuesNumber - 1]) {
+        if(answerEdit != correctAnswer[editQuesNumber - 1]) point--;
+    }else {
+        if(answerEdit == correctAnswer[editQuesNumber - 1]) point++;
+    }
+    printf("Diem sau edit %d\n", point);
+    char f[100];
+    strcpy(f, RESULT_FOLDER);
+    strcat(f, "/");
+    strcat(f, currentRoom);
+    strcat(f, ".txt");
+
+    List roompL = getAllRoomPoint(f);
+    RoomPoint *rp = searchRoomPoint(&roompL, currentUserName);
+    // nếu tìm thấy kết quả của học sinh thì cập nhật
+    if (rp) {
+        sprintf(rp->point, "%d", point);
+    } else { // nếu k thì tạo mới kết quả và thêm vào danh sách
+        RoomPoint *new = (RoomPoint*)malloc(sizeof(RoomPoint));
+        strcpy(new->stud_name, currentUserName);
+        sprintf(new->point, "%d", point);
+        addEnd(&roompL, new);
+    }
+    saveAllRoomPoint(f, roompL);
+    return 1;
+}
+
 
 /*
 * thêm câu hỏi vào phòng học cụ thể

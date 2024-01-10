@@ -247,7 +247,6 @@ void handleRes(char *res, char *req) {
 
     } else if (strcmp(op, "JOIN_ROOM_OK") == 0) {
         printf("\n[%s]\n", op);
-
         startTest();
     } else if (strcmp(op, "JOIN_ROOM_NOT_OK") == 0) {
         printf("\n[%s]\n", op);
@@ -324,9 +323,11 @@ void joinRoom(char* list_room) {
 void answer(char* x) {
     int i = 0;
     int c = 0;
-    char ans[20];
+    int control;
+    int editQuesNumber;
+    char ans[MAX];
     char question[MAXLINE], choice[4][MAX];
-    char userAnswer[10]; // Biến lưu trữ câu trả lời của người dùng
+    int userAnswer[10]; // Biến lưu trữ câu trả lời của người dùng
     Question listQuestion[100];
     memset(listQuestion, 0, sizeof(listQuestion));
     do {
@@ -356,21 +357,57 @@ void answer(char* x) {
             printf("--> Your answer: ");
             scanf("%d", &c);
             while(getchar() != '\n');
-            // printf("answer: %d\n", c);
-            // printf("answer ssss: %s\n", listQuestion[i].choice[c-1]);
-            // printf("answer ssss: %s", choice[c-1]);
         } while(c < 1 || c > 4);
-        // makeReq(req, "", listQuestion[i].choice[c-1]);
-
+        userAnswer[i] = c;
         sprintf(ans, "%d", c);
         makeReq(req, "", ans);
-        // printf("req client: %s", req);
         sendReq(req);
         i++;
     } while (i < 10);
-    makeReq(req, "ANSWER", "");
-    sendReq(req);
+    while(i == 10) {
+        printf("\n");
+        printf("_____Submit_____\n");
+        printf("1. Yes\n");
+        printf("2. No, edit answer\n");
+        do
+        {
+            printf("--> Your choice: ");
+            scanf("%d", &control);
+            while(getchar() != '\n');
+        } while (control < 1 || control > 2);
+        switch (control)
+        {
+        case 1:
+            i++;
+            makeReq(req, "ANSWER", "");
+            sendReq(req);
+            break;
+        case 2: 
+            do {
+                printf("--> Edit question: ");
+                scanf("%d", &editQuesNumber);
+                while(getchar() != '\n');
+            } while(editQuesNumber < 1 || editQuesNumber > 10);
 
+            printf("\nCau %d: %s\n", editQuesNumber, listQuestion[editQuesNumber - 1].ques);
+            printf("1. %s\n", listQuestion[editQuesNumber -1].choice[0]);
+            printf("2. %s\n", listQuestion[editQuesNumber -1].choice[1]);
+            printf("3. %s\n", listQuestion[editQuesNumber -1].choice[2]);
+            printf("4. %s\n", listQuestion[editQuesNumber -1].choice[3]);
+
+            do {
+                printf("--> Your answer: ");
+                scanf("%d", &c);
+                while(getchar() != '\n');
+            } while(c < 1 || c > 4);
+            userAnswer[editQuesNumber - 1] = c;
+            sprintf(ans, "%d %d",editQuesNumber, c);
+            printf("gui di mode edit %s\n", ans);
+            makeReq(req, "EDIT", ans);
+            sendReq(req);
+        }
+    }
+    
     handleRes(res, req);
 }
 
