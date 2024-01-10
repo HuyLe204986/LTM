@@ -5,6 +5,4 @@ student4 1
 student5 1
 student6 1
 student7 1
-st 1
-sa 1
-huy 1
+a 1

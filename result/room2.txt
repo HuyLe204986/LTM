@@ -1,2 +1,3 @@
 student1	5
 student2	10
+a	8

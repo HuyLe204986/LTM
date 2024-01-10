@@ -20,7 +20,7 @@ typedef struct Student {
 typedef struct question {
     int id;
     int level;
-    char ques[200];
+    char ques[4096];
     char choice[4][100];
     char answer[100];
 } Question;

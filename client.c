@@ -324,29 +324,47 @@ void joinRoom(char* list_room) {
 void answer(char* x) {
     int i = 0;
     int c = 0;
+    char ans[20];
     char question[MAXLINE], choice[4][MAX];
     char userAnswer[10]; // Biến lưu trữ câu trả lời của người dùng
+    Question listQuestion[100];
+    memset(listQuestion, 0, sizeof(listQuestion));
     do {
         if (i == 0) {
-            parseQuestion(x, question, choice);
+            // parseQuestion(x, question, choice);
+            parseQuestion(x, listQuestion[i].ques, listQuestion[i].choice);
+            // strcpy(listQuestion[i].ques, question);
         } else {
             recvRes(res);
-            parseQuestion(res, question, choice);
+            // parseQuestion(res, question, choice);
+            // strcpy(listQuestion[i].ques, question);
+            parseQuestion(res, listQuestion[i].ques, listQuestion[i].choice);
         }
 
-        printf("\nCau %d: %s\n", i+1, question);
-        printf("1. %s\n", choice[0]);
-        printf("2. %s\n", choice[1]);
-        printf("3. %s\n", choice[2]);
-        printf("4. %s\n", choice[3]);
+        // printf("\nCau %d: %s\n", i+1, question);
+        // printf("1. %s\n", choice[0]);
+        // printf("2. %s\n", choice[1]);
+        // printf("3. %s\n", choice[2]);
+        // printf("4. %s\n", choice[3]);
 
+        printf("\nCau %d: %s\n", i+1, listQuestion[i].ques);
+        printf("1. %s\n", listQuestion[i].choice[0]);
+        printf("2. %s\n", listQuestion[i].choice[1]);
+        printf("3. %s\n", listQuestion[i].choice[2]);
+        printf("4. %s\n", listQuestion[i].choice[3]);
         do {
             printf("--> Your answer: ");
             scanf("%d", &c);
             while(getchar() != '\n');
+            // printf("answer: %d\n", c);
+            // printf("answer ssss: %s\n", listQuestion[i].choice[c-1]);
+            // printf("answer ssss: %s", choice[c-1]);
         } while(c < 1 || c > 4);
+        // makeReq(req, "", listQuestion[i].choice[c-1]);
 
-        makeReq(req, "", choice[c-1]);
+        sprintf(ans, "%d", c);
+        makeReq(req, "", ans);
+        // printf("req client: %s", req);
         sendReq(req);
         i++;
     } while (i < 10);

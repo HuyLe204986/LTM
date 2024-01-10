@@ -206,7 +206,6 @@ int recvReq(char *req) {
     recv(fd, req, MAXLINE, 0); // nhận yêu cầu qua socket fd và lưu vào vùng nhớ req
     len = strlen(req);
     // printf("\nReq: %s.. len: %d\n", req, len);
-    printf("\nReq: %s\n", req);
     return len;
 }
 
@@ -528,6 +527,7 @@ int startTest() {
     point = 0;
     for (int i = 0; i<10; i++) {
         q = (Question*)n->value;
+        // printf("anwser %s", q->answer);
         quesToString(q, buf);
 
         if (i == 0)
@@ -536,10 +536,16 @@ int startTest() {
             makeRes(res, "", buf);
         sendRes(res);
         recvReq(req); // nhận câu trả lời từ client
-        // printf("\nanswer: %s.\n", req);
-        if (strcmp(req, q->answer) == 0) {
+        printf("\nanswer req: %s %ld.\n", req, strlen(req));
+        printf("\nanswer correct: %s %ld.\n", q->answer, strlen(q->answer));
+
+        // if (strcmp(req, q->answer) == 0) {
+        //     point++;
+        // }
+        if(atoi(req) == atoi(q->answer)) {
             point++;
         }
+        printf("Diem %d\n", point);
         memset(buf, 0, MAXLINE);
         n = n->next;
     }
