@@ -1,23 +1,23 @@
-1 | 1 | What is the sum of 1+2+3+4+5+6+7+8+9+10? | 55 | 56 | 57 | 58 | 1 |
-2 | 1 | What is the chemical symbol for Hydrogen? | Hydro | Oxy | Nitro | Carbon | 1 |
-3 | 1 | What is the capital of Vietnam? | Hanoi | Ho Chi Minh City | Can Tho | Thanh Hoa | 1 |
-4 | 1 | Who is the author of the short story "The Last Leaf"? | O'Henry | Andrexen | Guy de Maupassant | A.P. Chekhov | 2 |
-5 | 1 | Who painted the "Mona Lisa"? | Titian | Raphael | Leonardo da Vinci | Michelangelo | 3 |
-6 | 1 | What does the letter 'X' mean in Roman numerals? | Ten | Nine | Eight | Seven | 1 |
-7 | 1 | Michael Schumacher is a legend in which sport? | F1 Racing | Boxing | Football | Basketball | 1 |
-8  | 2 | The Patheon temple is considered the pinnacle of technical thought in which ancient civilization? | Rome | Egypt | Greece | Vietnam | 1 |
-9  | 2 | Who was the winner of the 2017 Ballon d'Or? | C.Ronaldo | L.Messi | Neymar JR | L.Modric | 1 |
-10 | 2 | Who is the author of "Vo chong A Phu"? | To Hoai | Nam Cao | Thach Lam | Nguyen Tuan | 1 |
-11 | 2 | What was the national title of our country from 544 to 602? | Van Lang | Van Xuan | Dai Viet | Dai Co Viet | 2 |
-12 | 2 | If you have 16 soft drink bottle caps, how many new bottles can you exchange for? | 4 | 5 | 6 | 7 | 2 |
-13 | 2 | Which country won the Mrs. World 2009 competition? | Russia | Germany | England | Vietnam | 1 |
-14 | 2 | Which football team in the Premier League is nicknamed "The Red Devils"? | M.United | Arsenal | Chelsea | Tottenham | 1 |
-15 | 3 | The poem "Nang moi" by Luu Trong Lu is about whom? | Father | Mother | Grandfather | Grandmother | 2 |
-16 | 3 | What is the mascot of AIG? | Chicken | Elephant | Monkey | Giraffe | 1 |
-17 | 3 | How many zeros are there from 1 to 150? | 14 | 15 | 16 | 17 | 3 |
-18 | 3 | Poverty Day: | October 17th | October 16th | October 15th | October 18th | 1 |
-19 | 3 | The author of the French version of "The Hand of God": | K.Benzema | R.Varane | T.Henry | P.Pogba | 3 |
-20 | 3 | When a free-falling object is deflected towards which direction? | East | West | South | North | 1 |
-21 | 3 | Where was the EURO first organized? | Italy | France | Germany | England | 2 |
-22 | 3 | Located near Hoang Lien Son mountain range, Mu Cang Chai is a remote district of which province? | Lang Son | Son La | Hoa Binh | Yen Bai | 4 |
-23 | 3 | Who is the artist of the work "Tieng sao dieu"? | Bui Xuan Phai | Tran Van Can | Ngo Duc Ke | Le Lam | 1 |
+1  | 1 | Who was the last queen of the feudal regime in Vietnam? | Nam Phuong | Bac Phuong | Tay Phuong | Dong Phuong | 1 |
+2  | 1 | Which province does Phu Quoc island belong to in Vietnam? | Bac Giang | Kien Giang | Ha Giang | Ba Ria Vung Tau | 2 |
+3  | 1 | Who is the author of the poem "The Ferry"? | Nguyen Duy | Nguyen Duong | Nguyen Du | Nguyen Hue | 1 |
+4  | 1 | How many even prime numbers are there? | 0 | 1 | 2 | 3 | 2 |
+5  | 1 | How many edges must a convex polygon have at least? | 2 | 3 | 4 | 5 | 2 |
+6  | 1 | What are functions whose first derivative is zero called? | Constant function | Implicit function | Monotone function | Fractional function | 1 |
+7  | 1 | Which province does Sam Son Beach belong to? | Thanh Hoa | Nghe An | Ha Tinh | Quang Binh | 1 |
+8  | 2 | Who is the author of the novel 'War and Peace'? | Andersen | Victor Hugo | Lev Tolstoy | Leonardo Da Vinci | 3 |
+9  | 2 | Which element has the highest electronegativity? | Hydrogen | Fluorine | Chlorine | Bromine | 2 |
+10 | 2 | Who is the second most Ballon d'Or-winning football player in the world? | L.Messi | C.Ronaldo | R.Lewandowski | Ronaldinho | 2 |
+11 | 2 | Which country is the headquarters of the WTO located in? | Switzerland | Sweden | Netherlands | England | 1 |
+12 | 2 | Whose famous poetry collection is 'Uc Trai'? | Nguyen Du | Nguyen Trai | Nguyen Tuan | Nguyen Dinh Chieu | 2 |
+13 | 2 | Under which king did Hanoi have the name Dong Do? | Ho Quy Ly | Ly Nam De | Ly Thuong Kiet | Le Loi | 1 |
+14 | 2 | Among the types of radio waves, which type has the most energy? | Extremely high-frequency waves | Short waves | Medium waves | Long waves | 1 |
+15 | 3 | Who was the first General Secretary of Vietnam? | Tran Phu | Le Duan | Le Kha Phieu | Truong Chinh | 1 |
+16 | 3 | How many single-digit prime numbers are there? | 1 | 2 | 3 | 4 | 4 |
+17 | 3 | Which physical quantity characterizes the actual speed of current execution? | Power | Capacity | Speed | Electrical energy | 1 |
+18 | 3 | Which chemical element is most commonly used in computer chip manufacturing? | Fe | Si | Ag | Pb | 2 |
+19 | 3 | What is the capital of the Philippines? | Cebu | Davao | Manila | Antipolo | 3 |
+20 | 3 | How many chromosomes are there in a human 2n sex cell? | 45 | 46 | 47 | 48 | 2 |
+21 | 3 | Which country is the host of the 2021 Olympics? | South Korea | Brazil | Japan | Germany | 3 |
+22 | 3 | Who was the first king to hold the plowing ritual in Vietnam? | Le Chieu Thong | Le Loi | Le Dai Hanh | Le Thanh Tong | 3 |
+23 | 3 | Which chemical element in Latin means "Liquid Silver"? | Mg | Ca | Ag | Hg | 4 |

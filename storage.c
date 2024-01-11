@@ -75,16 +75,21 @@ void addEnd(List* l, void* value) {
 
 List getAllRooms(char *f_room) {
     char rname[100];
+    int status;
 
     FILE *f = fopen(f_room, "r");
     List l = newList();
     if (f == NULL)  return l;
 
     Room *r;
-    while(fscanf(f, "%[^\n] ", rname) != EOF){
+    // f, "%s %d", rname, &status)
+    // fscanf(f, "%[^\n] ", rname
+    while(fscanf(f, "%s %d", rname, &status) != EOF){
         r = (Room*) malloc(sizeof(Room));
         // printf("rname: %s..\n", rname);
+        // printf("status: %d..\n", status);
         strcpy(r->name, rname);
+        r->status = status;
         addEnd(&l, r);
     }
     fclose(f);

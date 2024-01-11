@@ -154,9 +154,13 @@ void signup() {
     scanf("%[^\n]", confirmPassword);
     while(getchar() != '\n');
 
-    printf("--> role: ");
-    scanf("%[^\n]", roleName);
-    while(getchar() != '\n');
+    do
+    {
+        printf("--> role: ");
+        scanf("%[^\n]", roleName);
+        while(getchar() != '\n');
+    } while (strcmp(roleName, "teacher") != 0 && strcmp(roleName, "student") != 0);
+    
 
     // lưu vào buf định dạng <usename> <password> <confirmPW> <roleName>
     strcat(buf, username);
@@ -225,6 +229,7 @@ void handleRes(char *res, char *req) {
     char op[MAX], message[MAX];
 
     recvRes(res); // nhận phản hồi từ server
+    printf("Phan hoi tu server %s\n", res);
     parseRes(res, op, message); // lấy ra mã thao tác và message
     if(strcmp(op, "SIGNUP_OK") == 0) {
         printf("\n[%s]\n", op);
@@ -249,9 +254,12 @@ void handleRes(char *res, char *req) {
         printf("\n[%s]\n", op);
         startTest();
     } else if (strcmp(op, "JOIN_ROOM_NOT_OK") == 0) {
+        printf("\n[%s]\n", op); 
+    } 
+    else if(strcmp(op, "ROOM_CLOSE") == 0) {
         printf("\n[%s]\n", op);
-        
-    } else if (strcmp(op, "CREATE_ROOM_OK") == 0) {
+    } 
+    else if (strcmp(op, "CREATE_ROOM_OK") == 0) {
         printf("\n[%s]\n", op);
         
     } else if (strcmp(op, "CREATE_ROOM_NOT_OK") == 0) {
@@ -310,7 +318,9 @@ void joinRoom(char* list_room) {
     scanf("%[^\n]", room_name);
     while(getchar() != '\n');
 
+    // printf("phong: %s", room_name);
     makeReq(req, "JOIN_ROOM", room_name);
+    // printf("req gui di %s", req);
     sendReq(req);
 
     handleRes(res, req);
@@ -381,6 +391,7 @@ void answer(char* x) {
             i++;
             makeReq(req, "ANSWER", "");
             sendReq(req);
+            handleRes(res, req);
             break;
         case 2: 
             do {
@@ -402,13 +413,12 @@ void answer(char* x) {
             } while(c < 1 || c > 4);
             userAnswer[editQuesNumber - 1] = c;
             sprintf(ans, "%d %d",editQuesNumber, c);
-            printf("gui di mode edit %s\n", ans);
+            // printf("gui di mode edit %s\n", ans);
             makeReq(req, "EDIT", ans);
             sendReq(req);
         }
     }
     
-    handleRes(res, req);
 }
 
 /*
@@ -478,7 +488,7 @@ void sendReq(char *req) {
 int recvRes(char *res) {
     memset(res, 0, MAXLINE);
     if (0 > recv(sockfd, res, MAXLINE, 0)) {
-        // printf("\nres: %s\n", res);
+        printf("\nres: %s\n", res);
         return strlen(res);
     }
     return -1;
@@ -493,8 +503,9 @@ void teacherMenu() {
         printf("| 1. SHOW ROOM                |\n");
         printf("| 2. CREATE ROOM              |\n");
         printf("| 3. DELETE ROOM              |\n");
-        printf("| 4. SHOW POINT               |\n");
-        printf("| 5. ADD QUESTION             |\n");
+        printf("| 4. UPDATE ROOM              |\n");
+        printf("| 5. SHOW POINT               |\n");
+        printf("| 6. ADD QUESTION             |\n");
         printf("| 0. EXIT                     |\n");
         printf("|_____________________________|\n");
         while(1) {
@@ -514,9 +525,12 @@ void teacherMenu() {
                     deleteRoom();
                     break;
                 case 4:
-                    showPoint();
+                    // updateRoom();
                     break;
                 case 5:
+                    showPoint();
+                    break;
+                case 6:
                     addQuestion();
                     break;
                 case 0:
@@ -525,7 +539,7 @@ void teacherMenu() {
                 default:
                     printf("\n[Try again]\n");
             }
-            if (choice > -1 && choice < 6) {
+            if (choice > -1 && choice < 7) {
                 break;
             }
         }
@@ -577,6 +591,33 @@ void deleteRoom() {
 
     handleRes(res, req);
 }
+
+//void updateRoom() { 
+    // char room_name[100]; 
+    // int status;
+    // printf("\n");
+    // printf("_________ UPDATE ROOM _________\n");
+    // printf("---> Type room name: ");
+    // scanf("%[^\n]s", room_name);
+    // while(getchar() != '\n');
+
+    // printf("---> Type status: ");
+    // scanf("%d", &status);
+    // while(getchar() != '\n');
+
+    // char status_str[20];
+    // sprintf(status_str, "%d", status);
+
+    // char roomInfo[150];
+    // strcpy(roomInfo, room_name);
+    // strcat(roomInfo, " ");
+    // strcat(roomInfo, status_str);
+
+    // makeReq(req, "UPDATE_ROOM", roomInfo);
+    // sendReq(req);
+
+    // handleRes(res, req);
+//}
 
 /*
 * xử lý xem điểm của room

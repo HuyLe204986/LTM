@@ -27,6 +27,7 @@ typedef struct question {
 
 typedef struct room {
     char name[100];
+    int status; //0 - close; 1 - open
 } Room;
 
 typedef struct room_point {
@@ -34,7 +35,7 @@ typedef struct room_point {
     char point[20];
 } RoomPoint;
 
-// khai báo nút trong danh sách liên kết
+// khai báo nút trong danh sách liên kết 
 typedef struct node {
     void *value;
     struct node *next;

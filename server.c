@@ -24,6 +24,7 @@ int fd;
 int isCorrectAnswer[20];
 int correctAnswer[20];
 
+
 int main (int argc, char **argv)
 {
     int listenfd, connfd, n;
@@ -89,6 +90,7 @@ int main (int argc, char **argv)
 * @param {char*} req: yêu cầu từ client
 */
 void handle(char *req, char *res) {
+
     // op: xác định loại thao tác mà client muốn thực hiện
     // message: thông điệp đi kèm với thao tác đó
     char op[MAX], message[MAXLINE];
@@ -152,7 +154,11 @@ void handle(char *req, char *res) {
             writeLog(infoActivity);
         }
 
-    } else if (strcmp(op, "JOIN_ROOM") == 0) {
+    } 
+    // else if(strcmp(op, "UPDATE_ROOM")) {
+    //     int status = updateRoom(message);
+    // } 
+    else if (strcmp(op, "JOIN_ROOM") == 0) {
         int status = joinRoom(message);
         if(status) {
             char infoActivity[100];
@@ -174,6 +180,7 @@ void handle(char *req, char *res) {
     } else if(strcmp(op, "EDIT") == 0) {
         int status = editAnswerQuestion(message);
     } else if (strcmp(op, "ANSWER") == 0) {
+        // printf("Chon nop bai thi \n");
         makeRes(res, "", "");
         sprintf(res, "%s %d", "ANSWER_OK", point);
         sendRes(res);
@@ -222,6 +229,7 @@ void parseReq(char *req, char *op, char *message) {
     char *next_s;
     // tách các phần của req
     printf("req server: %s\n", req);
+    // if(!req) return;
     strcpy(op, strtok(req, " ")); // lưu phần đầu vào biến op
     if ((next_s = strtok(NULL, ""))) {
         strcpy(message, next_s);
@@ -355,10 +363,17 @@ int loginStudent(char *username, char *password) {
             Node n = roomL.head;
             for (int i = 0; i<roomL.count; i++) {
                 Room* r = (Room*)n->value;
+                char *roomStatus = r->status == 0 ? "close" : "available";
                 if (i != 0) {
-                    strcat(buf, " ");
+                    strcat(buf, "\n");
                     strcat(buf, r->name);
-                } else strcat(buf, r->name);
+                    strcat(buf, " ");
+                    strcat(buf, roomStatus);
+                } else {
+                    strcat(buf, r->name);
+                    strcat(buf, " ");
+                    strcat(buf, roomStatus);
+                }
                 n = n->next;
             }
             strcpy(currentUserName, username); // lưu lại tên người dùng hiện tại
@@ -437,6 +452,41 @@ int createRoom(char *room_name) {
     return 1;
 }
 
+//int updateRoom(char *room_info) {
+    // char res[MAXLINE] = "";
+    // char *room_name = strtok(room_info, " ");
+    // char *status_str = strtok(NULL, " ");
+    // int  status = atoi(status_str);
+    // List roomL = getAllRooms(ROOM_FILE);
+    
+    // Room *r = searchRoomByName(&roomL, room_name);
+    // if (!r) {
+    //     makeRes(res, "UPDATE_ROOM_NOT_OK", "");
+    //     sendRes(res);
+    //     return 0;
+    // }
+
+    // FILE *file = fopen(ROOM_FILE, "r+");
+    // if (file == NULL) {
+    //     printf("Không thể mở file!\n");
+    //     return 0;
+    // }
+    // Room *room;
+    // int found = 0;
+    // while (fscanf(file, "%s %d\n", room->name, &room->status) == 2) {
+    //     if (strcmp(room->name, room_name) == 0) {
+    //         fseek(file, -strlen(room->name) - 2, SEEK_CUR); // Di chuyển con trỏ đọc/ghi về vị trí đúng
+    //         fprintf(file, "%s %d\n", room->name, status); // Ghi thông tin mới vào file
+    //         found = 1;
+    //         break;
+    //     }
+    // }
+    // fclose(file);
+    // makeRes(res, "UPDATE_ROOM_OK", "");
+    // sendRes(res);
+    //return 1;
+//
+
 /*
 * xử lý xóa room
 * @param {char*} room_name: tên phòng
@@ -486,8 +536,11 @@ int showRoom() {
     Node node = roomL.head;
     // lưu danh sách tên của phòng
     for (int i = 0; i<roomL.count; i++) {
-        if (i != 0) strcat(buf, " ");
+        if (i != 0) strcat(buf, "\n");
         strcat(buf, ((Room*)node->value)->name);
+        strcat(buf, " ");
+        char *roomStatus = ((Room*)node->value)->status == 0 ? "close" : "available";
+        strcat(buf, roomStatus);
         node = node->next;
     }
 
@@ -504,15 +557,28 @@ int joinRoom(char *room_name) {
     char res[MAXLINE] = "";
 
     List roomL = getAllRooms(ROOM_FILE);
-    if (searchRoomByName(&roomL, room_name)) {
-        strcpy(currentRoom, room_name);
-        makeRes(res, "JOIN_ROOM_OK", "");
-        sendRes(res);
-        return 1;
+    Room *r = (Room*)malloc(sizeof(Room));
+    r = searchRoomByName(&roomL, room_name);
+    if (r) {
+        if(r->status == 0) {
+            makeRes(res, "ROOM_CLOSE", "");
+            sendRes(res);
+            return 0;
+        }else {
+            strcpy(currentRoom, room_name);
+            makeRes(res, "JOIN_ROOM_OK", "");
+            sendRes(res);
+            return 1;
+        }
+        // strcpy(currentRoom, room_name);
+        // makeRes(res, "JOIN_ROOM_OK", "");
+        // sendRes(res);
+        // return 1;
     }
     makeRes(res, "JOIN_ROOM_NOT_OK", "");
     sendRes(res);
     return 0;
+
 }
 
 /*
@@ -522,6 +588,9 @@ int startTest() {
     char res[MAXLINE] = "";
     char req[MAXLINE] = "";
     char buf[MAXLINE] = "";
+
+    memset(isCorrectAnswer, 0, sizeof(isCorrectAnswer));
+    memset(correctAnswer, 0, sizeof(correctAnswer));
     
     Question *q;
     List quesL = makeQues(currentRoom);
@@ -592,11 +661,12 @@ int startTest() {
         addEnd(&roompL, new);
     }
     saveAllRoomPoint(f, roompL);
+    freeList(&roompL);
     return 1;
 }
 
 int editAnswerQuestion(char *message) {
-
+    char res[MAXLINE] = "";
     int editQuesNumber;
     int answerEdit;
     printf("req mode edit: %s\n", message);
@@ -612,6 +682,8 @@ int editAnswerQuestion(char *message) {
         if(answerEdit == correctAnswer[editQuesNumber - 1]) point++;
     }
     printf("Diem sau edit %d\n", point);
+    // makeRes(res, "EDIT_OK", "");
+    // sendRes(res);
     char f[100];
     strcpy(f, RESULT_FOLDER);
     strcat(f, "/");
@@ -630,6 +702,7 @@ int editAnswerQuestion(char *message) {
         addEnd(&roompL, new);
     }
     saveAllRoomPoint(f, roompL);
+    freeList(&roompL);
     return 1;
 }
 
@@ -652,6 +725,11 @@ int addQuestion(char *room_ques) {
     Room* r = searchRoomByName(&roomL, room);
 
     if (r) {
+        if(r->status == 0) {
+            makeRes(res, "ROOM_CLOSE", "");
+            sendRes(res);
+            return 0;
+        }
         strcpy(f_path, "question/");
         strcat(f_path, room);
         strcat(f_path, ".txt");

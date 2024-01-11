@@ -20,6 +20,7 @@ int editAnswerQuestion();
 int answer();
 
 int showRoom();
+//int updateRoom(char *room_info);
 int createRoom(char *room_name);
 int deleteRoom(char *room_name);
 int addQuestion(char *ques);
