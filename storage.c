@@ -314,7 +314,7 @@ int saveAllRoom(char* room_f, List l) {
     }
     while (node != NULL) {
         r = (Room*)node->value;
-        fprintf(f, "%s\n", r->name);
+        fprintf(f, "%s %d\n", r->name, r->status);
         node = node->next;
     }
     fclose(f);

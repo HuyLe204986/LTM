@@ -11,7 +11,7 @@ void parseQuestion(char *q, char *ques, char choice[][100]);
 
 void createRoom();
 void showRoom();
-//void updateRoom(); 
+void updateRoom(); 
 void deleteRoom();
 void showPoint();
 void addQuestion();

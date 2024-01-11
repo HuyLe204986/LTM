@@ -154,10 +154,10 @@ void handle(char *req, char *res) {
             writeLog(infoActivity);
         }
 
+    } else if(strcmp(op, "UPDATE_ROOM") == 0) {
+        printf("vao update\n");
+        int status = updateRoom(message);
     } 
-    // else if(strcmp(op, "UPDATE_ROOM")) {
-    //     int status = updateRoom(message);
-    // } 
     else if (strcmp(op, "JOIN_ROOM") == 0) {
         int status = joinRoom(message);
         if(status) {
@@ -419,14 +419,19 @@ int loginTeacher(char *username, char *password) {
 
 /*
 * xử lý tạo room
-* @param {char*} room_name: tên phòng
+* @param {char*} room_info: tên phòng
 */
-int createRoom(char *room_name) {
+int createRoom(char *room_info) {
     char res[MAXLINE] = "";
     char file[MAX] = "";
     
+    char room_name[MAX];
+    int status;
+    sscanf(room_info, "%s %d", room_name, &status);
+
     List roomL = getAllRooms(ROOM_FILE);
     // kiển tra trùng tên phòng
+
     if (searchRoomByName(&roomL, room_name)) {
         makeRes(res, "CREATE_ROOM_NOT_OK", "");
         sendRes(res);
@@ -435,6 +440,7 @@ int createRoom(char *room_name) {
 
     Room *r = (Room*)malloc(sizeof(Room));
     strcpy(r->name, room_name);
+    r->status = status;
     addEnd(&roomL, r);
     saveAllRoom(ROOM_FILE, roomL);
 
@@ -452,40 +458,46 @@ int createRoom(char *room_name) {
     return 1;
 }
 
-//int updateRoom(char *room_info) {
-    // char res[MAXLINE] = "";
-    // char *room_name = strtok(room_info, " ");
-    // char *status_str = strtok(NULL, " ");
-    // int  status = atoi(status_str);
-    // List roomL = getAllRooms(ROOM_FILE);
+/*
+* xử lý khi cập nhật lại trạng thái của room
+* @param {char *} room_info: thông tin room cần chỉnh sửa <tên> <trạng thái>
+*/
+int updateRoom(char *room_info) {
+    char res[MAXLINE] = "";
+    char *room_name = strtok(room_info, " ");
+    char *status_str = strtok(NULL, " ");
+    int  status = atoi(status_str);
+    // printf("thong tin phong: %s %d", room_name, status);
+    List roomL = getAllRooms(ROOM_FILE);
     
-    // Room *r = searchRoomByName(&roomL, room_name);
-    // if (!r) {
-    //     makeRes(res, "UPDATE_ROOM_NOT_OK", "");
-    //     sendRes(res);
-    //     return 0;
-    // }
+    Room *r = searchRoomByName(&roomL, room_name);
+    if (!r) {
+        makeRes(res, "UPDATE_ROOM_NOT_OK", "");
+        sendRes(res);
+        return 0;
+    }
+    // printf("Da thay room %s %d", room_name, status);
 
-    // FILE *file = fopen(ROOM_FILE, "r+");
-    // if (file == NULL) {
-    //     printf("Không thể mở file!\n");
-    //     return 0;
-    // }
-    // Room *room;
-    // int found = 0;
-    // while (fscanf(file, "%s %d\n", room->name, &room->status) == 2) {
-    //     if (strcmp(room->name, room_name) == 0) {
-    //         fseek(file, -strlen(room->name) - 2, SEEK_CUR); // Di chuyển con trỏ đọc/ghi về vị trí đúng
-    //         fprintf(file, "%s %d\n", room->name, status); // Ghi thông tin mới vào file
-    //         found = 1;
-    //         break;
-    //     }
-    // }
-    // fclose(file);
-    // makeRes(res, "UPDATE_ROOM_OK", "");
-    // sendRes(res);
-    //return 1;
-//
+    FILE *file = fopen(ROOM_FILE, "r+");
+    if (file == NULL) {
+        printf("Không thể mở file!\n");
+        return 0;
+    }
+    Room room;
+    int found = 0;
+    while (fscanf(file, "%s %d\n", room.name, &room.status) == 2) {
+        if (strcmp(room.name, room_name) == 0) {
+            fseek(file, -strlen(room.name) - 3, SEEK_CUR); // Di chuyển con trỏ đọc/ghi về vị trí đúng
+            fprintf(file, "%s %d\n", room.name, status); // Ghi thông tin mới vào file
+            found = 1;
+            break;
+        }
+    }
+    fclose(file);
+    makeRes(res, "UPDATE_ROOM_OK", "");
+    sendRes(res);
+    return 1;
+}
 
 /*
 * xử lý xóa room
@@ -665,6 +677,10 @@ int startTest() {
     return 1;
 }
 
+/*
+* chỉnh sửa câu trả lời
+* @param {char *}:  lưu thông tin câu trả lời chỉnh sửa:<op> <câu hỏi> <đáp án chỉnh sửa>
+*/
 int editAnswerQuestion(char *message) {
     char res[MAXLINE] = "";
     int editQuesNumber;

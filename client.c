@@ -177,7 +177,6 @@ void signup() {
     case 1:
         makeReq(req, "SIGNUP_STUDENT", buf);
         break;
-    
     case 2:
         makeReq(req, "SIGNUP_TEACHER", buf);
         break;
@@ -301,7 +300,8 @@ void handleRes(char *res, char *req) {
         
     } else if (strcmp(op, "ADD_QUESTION_NOT_OK") == 0) {
         printf("\n[%s]\n", op);
-        
+    } else if(strcmp(op, "UPDATE_ROOM_OK") == 0) {
+        printf("\n[%s]\n", op);
     }
 }
 
@@ -525,7 +525,7 @@ void teacherMenu() {
                     deleteRoom();
                     break;
                 case 4:
-                    // updateRoom();
+                    updateRoom();
                     break;
                 case 5:
                     showPoint();
@@ -563,13 +563,21 @@ void showRoom() {
 */
 void createRoom() {
     char room_name[100]; 
+    int status = 1;
+    char status_str[100];
+    status = sprintf(status_str, "%d", status);;
     printf("\n");
     printf("__________CREATE ROOM__________\n");
     printf("---> Type room name: ");
     scanf("%[^\n]s", room_name);
     while(getchar() != '\n');
 
-    makeReq(req, "CREATE_ROOM", room_name);
+    char roomInfo[150];
+    strcpy(roomInfo, room_name);
+    strcat(roomInfo, " ");
+    strcat(roomInfo, status_str);
+
+    makeReq(req, "CREATE_ROOM", roomInfo);
     sendReq(req);
 
     handleRes(res, req);
@@ -592,32 +600,32 @@ void deleteRoom() {
     handleRes(res, req);
 }
 
-//void updateRoom() { 
-    // char room_name[100]; 
-    // int status;
-    // printf("\n");
-    // printf("_________ UPDATE ROOM _________\n");
-    // printf("---> Type room name: ");
-    // scanf("%[^\n]s", room_name);
-    // while(getchar() != '\n');
+void updateRoom() { 
+    char room_name[100]; 
+    int status;
+    printf("\n");
+    printf("_________ UPDATE ROOM _________\n");
+    printf("---> Type room name: ");
+    scanf("%[^\n]s", room_name);
+    while(getchar() != '\n');
 
-    // printf("---> Type status: ");
-    // scanf("%d", &status);
-    // while(getchar() != '\n');
+    printf("---> Type status: ");
+    scanf("%d", &status);
+    while(getchar() != '\n');
 
-    // char status_str[20];
-    // sprintf(status_str, "%d", status);
+    char status_str[20];
+    sprintf(status_str, "%d", status);
 
-    // char roomInfo[150];
-    // strcpy(roomInfo, room_name);
-    // strcat(roomInfo, " ");
-    // strcat(roomInfo, status_str);
+    char roomInfo[150];
+    strcpy(roomInfo, room_name);
+    strcat(roomInfo, " ");
+    strcat(roomInfo, status_str);
 
-    // makeReq(req, "UPDATE_ROOM", roomInfo);
-    // sendReq(req);
+    makeReq(req, "UPDATE_ROOM", roomInfo);
+    sendReq(req);
 
-    // handleRes(res, req);
-//}
+    handleRes(res, req);
+}
 
 /*
 * xử lý xem điểm của room
